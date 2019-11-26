@@ -10,6 +10,9 @@ import android.text.style.ClickableSpan;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -49,9 +52,6 @@ public class Spantastic {
         List<String> spanStringList = new ArrayList<>();
         spanStringList.add(spanString);
         setSpannable(context, textView, fullString, spanStringList, colorId, spannableCallBack, showUnderline, object);
-    }
-
-    private static void with(Context context) {
     }
 
     /**
