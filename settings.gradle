@@ -1,0 +1,2 @@
+include ':app', ':spantastic'
+rootProject.name='SpannableTextView'
