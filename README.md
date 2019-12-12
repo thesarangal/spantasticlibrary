@@ -23,3 +23,5 @@ Step 2. Add the dependency
 
 Link
 That's it! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
+
+Download DEMO: https://github.com/thesarangal/spantasticlibrary/raw/master/SpantasticDemo.apk
