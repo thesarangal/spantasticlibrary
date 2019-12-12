@@ -7,13 +7,10 @@ import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Written By: Sarangal
+ * Developed with Love by Sarangal
  */
 
 public class Spantastic {
@@ -33,7 +30,17 @@ public class Spantastic {
     private SpannableCallBack mSpannableCallBack;
     private List<SpanModel> mSpanModelList;
     private Typeface mTypeface;
+    private Float mTextSize;
     private boolean showUnderline;
+    private Object mObject;
+
+    /**
+     * Method Params:
+     *
+     * @param spantasticBuilder    SpantasticBuilder Object with multiple params
+     *                             for Custom Spannable Styling.
+     *
+     */
 
     public Spantastic(SpantasticBuilder spantasticBuilder) {
         mContext = spantasticBuilder.mContext;
@@ -44,9 +51,14 @@ public class Spantastic {
         showUnderline = spantasticBuilder.showUnderline;
         mSpanModelList = spantasticBuilder.mSpanModelList;
         mTypeface = spantasticBuilder.mTypeface;
+        mTextSize = spantasticBuilder.mTextSize;
+        mObject = spantasticBuilder.mObject;
+
+        /* Set Styling to the TextView */
         setSpannable();
     }
 
+    /* Set Styling to the TextView */
     private void setSpannable() {
         SpannableString spString = new SpannableString(mFullString);
         if (mContext != null && mTextView != null && mFullString != null && !mFullString.isEmpty() && mSpanModelList != null && !mSpanModelList.isEmpty()) {
@@ -61,97 +73,49 @@ public class Spantastic {
                             @Override
                             public void onClick(@NonNull View view) {
                                 if (mSpannableCallBack != null) {
-                                    mSpannableCallBack.onSpanClick(spanModel.getCallbackKey() != null ? spanModel.getCallbackKey() : spanModel.getSpanString());
+
+                                    /* Callback with Interface for ACTION on span clicks */
+                                    mSpannableCallBack.onSpanClick(spanModel.getCallbackKey() != null ? spanModel.getCallbackKey() : spanModel.getSpanString(), mObject);
                                 }
                             }
 
                             @Override
                             public void updateDrawState(@NonNull TextPaint textPaint) {
                                 super.updateDrawState(textPaint);
+
+                                /* Set Span UnderLine */
                                 textPaint.setUnderlineText(spanModel.getShowUnderline() != null ? spanModel.getShowUnderline() : showUnderline);
+
+                                /* Set Span Color */
                                 try {
                                     if (spanModel.getColorId() != null || mColorID != null)
-                                        textPaint.setColor(ContextCompat.getColor(mContext, spanModel.getColorId() != null ? spanModel.getColorId() : mColorID));
-                                } catch (Exception ignored) {
+                                        textPaint.setColor(spanModel.getColorId() != null ? spanModel.getColorId() : mColorID);
+                                    else
+                                        textPaint.setColor(mTextView.getCurrentTextColor());
+                                } catch (Exception ignored) {}
+
+                                /* Set Span Typeface for Styling */
+                                if(spanModel.getTypeface()!=null || mTypeface !=null){
+                                    textPaint.setTypeface(spanModel.getTypeface()!=null ? spanModel.getTypeface() : mTypeface);
+                                }
+
+                                /* Set Span TextSize */
+                                if(spanModel.getTextSize() != null || mTextSize != null){
+                                    textPaint.setTextSize(spanModel.getTextSize() != null ? spanModel.getTextSize() : mTextSize);
                                 }
                             }
                         };
+
+                        /* Set Span on SpannableString */
                         spString.setSpan(clickSpan, start, end, 0);
                     }
                     mTextView.setText(spString);
+
+                    /* Support to Clickable */
+                    mTextView.setMovementMethod(LinkMovementMethod.getInstance());
+
+                    mTextView.setHighlightColor(Color.TRANSPARENT);
                 }
-            }
-        }
-    }
-
-    /**
-     * Method Params:
-     *
-     * @param context           Instance or Reference
-     * @param textView          TextView on which spannable text will be applied
-     * @param fullString        Complete string value from which span(s) will be found.
-     * @param spanString        Single string which will be convert to spanable.
-     * @param colorId           The desired resource identifier, as generated by the aapt
-     *                          tool. This integer encodes the package, type, and resource
-     *                          entry. The value 0 is an invalid identifier.
-     * @param spannableCallBack Interface reference to get click callback of specific
-     *                          span click.
-     * @param showUnderline     true: underline will be display under span text,
-     *                          false: no underline
-     * @param object            May object any object which will be return on span click via
-     *                          spannableCallBack interface.
-     */
-    public static void setSpannable(Context context, TextView textView, String fullString, String spanString, int colorId, final SpannableCallBack spannableCallBack, boolean showUnderline, Object object) {
-        List<String> spanStringList = new ArrayList<>();
-        spanStringList.add(spanString);
-        setSpannable(context, textView, fullString, spanStringList, colorId, spannableCallBack, showUnderline, object);
-    }
-
-    /**
-     * Method Params:
-     *
-     * @param context           Instance or Reference
-     * @param textView          TextView on which spannable text will be applied
-     * @param fullString        Complete string value from which span(s) will be found.
-     * @param spanStringList    List of strings which will be convert to spanable.
-     * @param colorId           The desired resource identifier, as generated by the aapt
-     *                          tool. This integer encodes the package, type, and resource
-     *                          entry. The value 0 is an invalid identifier.
-     * @param spannableCallBack Interface reference to get click callback of specific
-     *                          span click.
-     * @param showUnderline     true: underline will be display under span text,
-     *                          false: no underline
-     * @param object            May object any object which will be return on span click via
-     *                          spannableCallBack interface.
-     */
-
-    public static void setSpannable(final Context context, TextView textView, String fullString, List<String> spanStringList, final int colorId, final SpannableCallBack spannableCallBack, final boolean showUnderline, final Object object) {
-        SpannableString spString = new SpannableString(fullString);
-        for (final String spanString : spanStringList) {
-            Pattern pattern = Pattern.compile(spanString);
-            Matcher matcher = pattern.matcher(fullString);
-            while (matcher.find()) {
-                int start = matcher.start();
-                int end = matcher.end();
-                ClickableSpan clickSpan = new ClickableSpan() {
-                    @Override
-                    public void onClick(@NonNull View view) {
-                        if (spannableCallBack != null) {
-                            spannableCallBack.onSpanClick(spanString, object);
-                        }
-                    }
-
-                    @Override
-                    public void updateDrawState(@NonNull TextPaint textPaint) {
-                        super.updateDrawState(textPaint);
-                        textPaint.setUnderlineText(showUnderline);
-                        textPaint.setColor(ContextCompat.getColor(context, colorId));
-                    }
-                };
-                spString.setSpan(clickSpan, start, end, 0);
-                textView.setText(spString);
-                textView.setMovementMethod(LinkMovementMethod.getInstance());
-                textView.setHighlightColor(Color.TRANSPARENT);
             }
         }
     }
@@ -163,6 +127,9 @@ public class Spantastic {
         void onSpanClick(String spanString, Object... object);
     }
 
+    /**
+     * Builder Class for Handling Spannable Operations
+     * */
     public static class SpantasticBuilder {
 
         private Context mContext;
@@ -173,52 +140,117 @@ public class Spantastic {
         private List<SpanModel> mSpanModelList;
         private Typeface mTypeface;
         private boolean showUnderline;
+        private Float mTextSize;
+        private Object mObject;
 
+        /**
+         * Method Params:
+         *
+         * @param mContext           Instance or Reference
+         * @param mTextView          TextView on which spannable text will be applied
+         * @param mFullString        Complete string value from which span(s) will be found.
+         *
+         */
         public SpantasticBuilder(@NonNull Context mContext, @NonNull TextView mTextView, @NonNull String mFullString) {
             this.mContext = mContext;
             this.mTextView = mTextView;
             this.mFullString = mFullString;
         }
 
-        public SpantasticBuilder setSpan(@NonNull String singleString) {
+        /**
+         * Method Params:
+         *
+         * @param singleString        Single string which will be convert to spannable.
+         *
+         */
+        public SpantasticBuilder setSpan(String singleString) {
             List<String> spanList = new ArrayList<>();
             if (singleString != null && !singleString.isEmpty())
                 spanList.add(singleString);
             return setSpanList(spanList);
         }
 
-        public SpantasticBuilder setSpanList(@NonNull List<String> spanList) {
+        /**
+         * Method Params:
+         *
+         * @param spanList       List of strings which will be convert to spannable.
+         *
+         */
+        public SpantasticBuilder setSpanList(List<String> spanList) {
             List<SpanModel> spanModelList = new ArrayList<>();
             if (spanList != null && !spanList.isEmpty())
                 for (String spanString : spanList)
                     if (spanString != null && !spanString.isEmpty())
-                        spanModelList.add(new SpanModel(spanString, null, spanString, null, null));
+                        spanModelList.add(new SpanModel(spanString, null, spanString, null, null, null));
             return setCustomSpanModel(spanModelList);
         }
 
-        public SpantasticBuilder setSpanColor(@IdRes int colorId) {
+        /**
+         * Method Params:
+         *
+         * @param colorId           The desired resource identifier, as generated by the aapt
+         *                          tool. This integer encodes the package, type, and resource
+         *                          entry. The value 0 is an invalid identifier.
+         *
+         */
+        public SpantasticBuilder setSpanColor(int colorId) {
             mColorID = colorId;
             return this;
         }
 
+        /**
+         * Method Params:
+         *
+         * @param showUnderline     true: underline will be display under span text,
+         *
+         */
         public SpantasticBuilder showUnderline(boolean showUnderline) {
             this.showUnderline = showUnderline;
             return this;
         }
 
+        /**
+         * Method Params:
+         *
+         * @param spannableCallBack Interface reference to get click callback of specific
+         *
+         */
         public SpantasticBuilder setClickCallback(@NonNull SpannableCallBack spannableCallBack) {
             mSpannableCallBack = spannableCallBack;
             return this;
         }
 
+        /**
+         * Method Params:
+         *
+         * @param typeface     Typeface for custom styling.
+         *
+         */
         public SpantasticBuilder setTypeface(@NonNull Typeface typeface) {
             mTypeface = typeface;
             return this;
         }
 
-        public SpantasticBuilder setCustomSpanModel(@NonNull List<SpanModel> spanModelList) {
+        /**
+         * Method Params:
+         *
+         * @param textSize       PIXEL value in Float type for TextSize.
+         *
+         */
+        public SpantasticBuilder setTextSize(float textSize) {
+            mTextSize = textSize;
+            return this;
+        }
+
+        /**
+         * Method Params:
+         *
+         * @param spanModelList    List of custom model of strings with custom
+         *                         styling params which will be convert to spannable.
+         */
+        public SpantasticBuilder setCustomSpanModel(List<SpanModel> spanModelList) {
             if (spanModelList != null) {
-                mSpanModelList = spanModelList;
+                mSpanModelList =  spanModelList;
             } else {
                 mSpanModelList = new ArrayList<>();
             }
@@ -226,10 +258,24 @@ public class Spantastic {
             return this;
         }
 
-        public Spantastic apply() {
-            return new Spantastic(this);
+        /**
+         * Method Params:
+         *
+         * @param object         May object any object which will be return on span click via
+         *                          spannableCallBack interface.
+         */
+        public SpantasticBuilder setObject(Object object){
+            mObject = object;
+            return this;
+        }
+
+        /**
+         *
+         * Implement Spantastic Constructor method.
+         *
+         * */
+        public void apply() {
+            new Spantastic(this);
         }
     }
-
-
 }
