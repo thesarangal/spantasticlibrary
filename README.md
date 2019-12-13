@@ -33,7 +33,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 ### Example
 
-![SpantasticScreenShot](https://user-images.githubusercontent.com/46309117/70746662-39a42480-1d4c-11ea-9dfd-f68b84147d94.png)
+![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/70819060-45025900-1dfb-11ea-8d87-919ec5b70c56.png)
 
 ### Demo
 
