@@ -127,4 +127,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 Download DEMO APK: https://github.com/thesarangal/spantasticlibrary/raw/master/SpantasticDemo.apk
 
+
+
+
 #### Developed with ❤ by Sarangal
