@@ -1,5 +1,8 @@
 ## Change Log
 
+### Version 2.0.2 (2019-12-26)
+- Some Bugs Fixed
+
 ### Version 2.0.0 (2019-12-13)
 - Builder Approach Implemented
 
