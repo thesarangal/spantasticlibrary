@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
                 .setClickCallback(new Spantastic.SpannableCallBack() {
                     @Override
                     public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH,
+                                "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT)
+                                .show();
                     }
                 })
                 .apply();
@@ -74,24 +76,45 @@ public class MainActivity extends AppCompatActivity {
         TextView tvFour = findViewById(R.id.tv_four);
         new Spantastic.SpantasticBuilder(this, tvFour, sentence)
                 .setSpan("text size")
-                .setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, this.getResources().getDisplayMetrics()))
+                .setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,
+                        this.getResources().getDisplayMetrics()))
                 .apply();
 
         /* Set Custom Spannables with unique styling */
         sentence = "Spantastic with custom styles for multiple words.";
         TextView tvFive = findViewById(R.id.tv_five);
         List<SpanModel> spanModelList = new ArrayList<>();
-        spanModelList.add(new SpanModel("custom", ContextCompat.getColor(this, R.color.colorPrimary), "custom", true, Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 15, this.getResources().getDisplayMetrics())));
-        spanModelList.add(new SpanModel("styles", ContextCompat.getColor(this, R.color.colorPrimaryDark), "styles", false, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10, this.getResources().getDisplayMetrics())));
-        spanModelList.add(new SpanModel("for", ContextCompat.getColor(this, R.color.colorAccent), "for", true, Typeface.create(Typeface.SERIF, Typeface.ITALIC), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18, this.getResources().getDisplayMetrics())));
-        spanModelList.add(new SpanModel("multiple", Color.parseColor("#FFFF5722"), "multiple", null, Typeface.create(Typeface.MONOSPACE, Typeface.BOLD_ITALIC), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, this.getResources().getDisplayMetrics())));
-        spanModelList.add(new SpanModel("words", Color.parseColor("#FF9C27B0"), "words", true, Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD), null));
+        spanModelList.add(new SpanModel("custom",
+                ContextCompat.getColor(this, R.color.colorPrimary), "custom",
+                true, Typeface.create(Typeface.DEFAULT, Typeface.NORMAL),
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 15,
+                        this.getResources().getDisplayMetrics())));
+        spanModelList.add(new SpanModel("styles",
+                ContextCompat.getColor(this, R.color.colorPrimaryDark), "styles",
+                false, Typeface.create(Typeface.DEFAULT, Typeface.BOLD),
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 10,
+                        this.getResources().getDisplayMetrics())));
+        spanModelList.add(new SpanModel("for",
+                ContextCompat.getColor(this, R.color.colorAccent), "for",
+                true, Typeface.create(Typeface.SERIF, Typeface.ITALIC),
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18,
+                        this.getResources().getDisplayMetrics())));
+        spanModelList.add(new SpanModel("multiple",
+                Color.parseColor("#FFFF5722"), "multiple", null,
+                Typeface.create(Typeface.MONOSPACE, Typeface.BOLD_ITALIC),
+                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13,
+                        this.getResources().getDisplayMetrics())));
+        spanModelList.add(new SpanModel("words",
+                Color.parseColor("#FF9C27B0"), "words", true,
+                Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD), null));
         new Spantastic.SpantasticBuilder(this, tvFive, sentence)
                 .setCustomSpanModel(spanModelList)
                 .setClickCallback(new Spantastic.SpannableCallBack() {
                     @Override
                     public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,
+                                String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString),
+                                Toast.LENGTH_SHORT).show();
                     }
                 })
                 .apply();
@@ -100,12 +123,15 @@ public class MainActivity extends AppCompatActivity {
         sentence = "Developed with ❤ by Sarangal";
         TextView tvCredit = findViewById(R.id.tv_credit);
         List<SpanModel> creditModelList = new ArrayList<>();
-        creditModelList.add(new SpanModel("❤", Color.parseColor("#FFFF2F2F"), "Love", null, Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), null));
-        creditModelList.add(new SpanModel("Sarangal", Color.parseColor("#FF00BCD4"), "Sarangal", null, Typeface.create(Typeface.DEFAULT, Typeface.BOLD), null));
+        creditModelList.add(new SpanModel("❤", Color.parseColor("#FFFF2F2F"),
+                "Love", null,
+                Typeface.create(Typeface.DEFAULT, Typeface.NORMAL), null));
+        creditModelList.add(new SpanModel("Sarangal",
+                Color.parseColor("#FF00BCD4"), "Sarangal", null,
+                Typeface.create(Typeface.DEFAULT, Typeface.BOLD), null));
         new Spantastic.SpantasticBuilder(this, tvCredit, sentence)
                 .setCustomSpanModel(creditModelList)
                 .apply();
 
     }
-
 }
