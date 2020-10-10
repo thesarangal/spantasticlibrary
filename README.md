@@ -121,7 +121,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 #### Above Example's Output
 
-![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/70819153-7e3ac900-1dfb-11ea-903d-7a869ccf3a32.png)
+![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/95648356-09f0b500-0af4-11eb-8f85-e719b3c340e9.png)
 
 ### Test Demo
 
