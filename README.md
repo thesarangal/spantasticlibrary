@@ -26,7 +26,7 @@ Add it in your root build.gradle at the end of repositories:
 #### Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.thesarangal:spantasticlibrary:2.0.0'
+	        implementation 'com.github.thesarangal:spantasticlibrary:2.0.2'
 	}
 
 Done! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
@@ -121,7 +121,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 #### Above Example's Output
 
-![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/70819153-7e3ac900-1dfb-11ea-903d-7a869ccf3a32.png)
+![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/95648356-09f0b500-0af4-11eb-8f85-e719b3c340e9.png)
 
 ### Test Demo
 
