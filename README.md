@@ -1,6 +1,8 @@
 # Spantastic Library
 Advance Spannable Customization
 
+Current Version: [![](https://jitpack.io/v/thesarangal/spantasticlibrary.svg)](https://jitpack.io/#thesarangal/spantasticlibrary)
+
 
 ### Features
 
@@ -26,7 +28,7 @@ Add it in your root build.gradle at the end of repositories:
 #### Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.thesarangal:spantasticlibrary:2.0.2'
+	        implementation 'com.github.thesarangal:spantasticlibrary:LATEST_VERSION'
 	}
 
 Done! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
