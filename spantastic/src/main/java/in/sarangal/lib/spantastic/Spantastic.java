@@ -60,7 +60,8 @@ public class Spantastic {
     /* Set Styling to the TextView */
     private void setSpannable() {
         SpannableString spString = new SpannableString(mFullString);
-        if (mContext != null && mTextView != null && mFullString != null && !mFullString.isEmpty() && mSpanModelList != null && !mSpanModelList.isEmpty()) {
+        if (mContext != null && mTextView != null && mFullString != null && !mFullString.isEmpty()
+                && mSpanModelList != null && !mSpanModelList.isEmpty()) {
             for (final SpanModel spanModel : mSpanModelList) {
                 try {
                     if (spanModel.getSpanString() != null && !spanModel.getSpanString().isEmpty()) {
@@ -83,7 +84,10 @@ public class Spantastic {
                                     if (mSpannableCallBack != null) {
 
                                         /* Callback with Interface for ACTION on span clicks */
-                                        mSpannableCallBack.onSpanClick(spanModel.getCallbackKey() != null ? spanModel.getCallbackKey() : finalSpanString, mObject);
+                                        mSpannableCallBack.onSpanClick(
+                                                spanModel.getCallbackKey() != null
+                                                        ? spanModel.getCallbackKey()
+                                                        : finalSpanString, mObject);
                                     }
                                 }
 
@@ -92,12 +96,14 @@ public class Spantastic {
                                     super.updateDrawState(textPaint);
 
                                     /* Set Span UnderLine */
-                                    textPaint.setUnderlineText(spanModel.getShowUnderline() != null ? spanModel.getShowUnderline() : showUnderline);
+                                    textPaint.setUnderlineText(spanModel.getShowUnderline() != null
+                                            ? spanModel.getShowUnderline() : showUnderline);
 
                                     /* Set Span Color */
                                     try {
                                         if (spanModel.getColorId() != null || mColorID != null)
-                                            textPaint.setColor(spanModel.getColorId() != null ? spanModel.getColorId() : mColorID);
+                                            textPaint.setColor(spanModel.getColorId() != null
+                                                    ? spanModel.getColorId() : mColorID);
                                         else
                                             textPaint.setColor(mTextView.getCurrentTextColor());
                                     } catch (Exception ignored) {
@@ -105,12 +111,14 @@ public class Spantastic {
 
                                     /* Set Span Typeface for Styling */
                                     if (spanModel.getTypeface() != null || mTypeface != null) {
-                                        textPaint.setTypeface(spanModel.getTypeface() != null ? spanModel.getTypeface() : mTypeface);
+                                        textPaint.setTypeface(spanModel.getTypeface() != null
+                                                ? spanModel.getTypeface() : mTypeface);
                                     }
 
                                     /* Set Span TextSize */
                                     if (spanModel.getTextSize() != null || mTextSize != null) {
-                                        textPaint.setTextSize(spanModel.getTextSize() != null ? spanModel.getTextSize() : mTextSize);
+                                        textPaint.setTextSize(spanModel.getTextSize() != null
+                                                ? spanModel.getTextSize() : mTextSize);
                                     }
                                 }
                             };
@@ -163,7 +171,8 @@ public class Spantastic {
          * @param mTextView   TextView on which spannable text will be applied
          * @param mFullString Complete string value from which span(s) will be found.
          */
-        public SpantasticBuilder(@NonNull Context mContext, @NonNull TextView mTextView, @NonNull String mFullString) {
+        public SpantasticBuilder(@NonNull Context mContext, @NonNull TextView mTextView,
+                                 @NonNull String mFullString) {
             this.mContext = mContext;
             this.mTextView = mTextView;
             this.mFullString = mFullString;
@@ -191,7 +200,8 @@ public class Spantastic {
             if (spanList != null && !spanList.isEmpty())
                 for (String spanString : spanList)
                     if (spanString != null && !spanString.isEmpty())
-                        spanModelList.add(new SpanModel(spanString, null, spanString, null, null, null));
+                        spanModelList.add(new SpanModel(spanString, null, spanString,
+                                null, null, null));
             return setCustomSpanModel(spanModelList);
         }
 

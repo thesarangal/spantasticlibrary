@@ -55,7 +55,8 @@ public class SpanModel {
      * @param mTypeface     Typeface for custom styling.
      */
 
-    public SpanModel(@NonNull String mSpanString, Integer mColorId, @NonNull String mCallbackKey, Boolean showUnderline, Typeface mTypeface, Float mTextSize) {
+    public SpanModel(@NonNull String mSpanString, Integer mColorId, @NonNull String mCallbackKey,
+                     Boolean showUnderline, Typeface mTypeface, Float mTextSize) {
         this.mSpanString = mSpanString;
         this.mColorId = mColorId;
         this.mCallbackKey = mCallbackKey;
