@@ -36,7 +36,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 ### How to use Spantastic
 #### I. Just Show Underline under specific word
 
-    ####Java:
+    Java:
 
 	String sentence = "Spannable with single word underline.";
 	TextView tvOne = findViewById(R.id.tv_one);
@@ -46,7 +46,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .apply();
 
 
-    ####Kotlin:
+    Kotlin:
 
     var sentence = "Spannable with single word underline."
     val tvOne = findViewById<TextView>(R.id.tv_one)
@@ -58,7 +58,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 		
 #### II. Show Underline and make Text BOLD for Multiple words
 
-    ####Java
+    Java
 
 	String sentence = "Spannable with underline and bold for multiple words.";
 	List<String> strings = new ArrayList<>();
@@ -73,7 +73,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .apply();
 
 
-    ####Kotlin
+    Kotlin
 
     sentence = "Spannable with underline and bold for multiple words."
     var strings: ArrayList<String> = ArrayList()
@@ -89,7 +89,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 #### III. Set Click on Multiple Words with Bold Style
 
-    ####Java
+    Java
 
 	String sentence = "Spannable with click, color, underline and bold for multiple words.";
 	List<String> strings = new ArrayList<>();
@@ -114,7 +114,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .apply();
 
 
-    ####Kotlin
+    Kotlin
 
     sentence =
         "Spannable with click, color, underline and bold for multiple words."
@@ -144,7 +144,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 		
 #### IV. Change TextSize
 
-    ####Java
+    Java
 
 	String sentence = "Spantastic with custom text size for words.";
     TextView tvFour = findViewById(R.id.tv_four);
@@ -155,7 +155,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                         .apply();
 
 
-    ####Kotlin
+    Kotlin
 
     sentence = "Spantastic with custom text size for words."
     val tvFour = findViewById<TextView>(R.id.tv_four)
@@ -172,7 +172,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
 		
 #### V. sentence = "Spantastic with custom styles for multiple words.";
 
-    ####Java
+    Java
 
 	TextView tvFive = findViewById(R.id.tv_five);
 	List<SpanModel> spanModelList = new ArrayList<>();
@@ -194,7 +194,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .apply();
 
 
-    ####Kotlin
+    Kotlin
 
     sentence = "Spantastic with custom styles for multiple words."
     val tvFive = findViewById<TextView>(R.id.tv_five)
