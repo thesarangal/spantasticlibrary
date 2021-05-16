@@ -1,14 +1,14 @@
 package in.sarangal.spannabletextview;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         /* Just Show Underline under specific word */
         sentence = "Spannable with single word underline.";
         TextView tvOne = findViewById(R.id.tv_one);
-        new Spantastic.SpantasticBuilder(this, tvOne, sentence)
+        new Spantastic.Builder(tvOne, sentence)
                 .setSpan("underline")
                 .showUnderline(true)
                 .apply();
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         strings.add("underline");
         strings.add("bold");
         TextView tvTwo = findViewById(R.id.tv_two);
-        new Spantastic.SpantasticBuilder(this, tvTwo, sentence)
+        new Spantastic.Builder(tvTwo, sentence)
                 .setSpanList(strings)
                 .showUnderline(true)
                 .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
@@ -56,25 +56,20 @@ public class MainActivity extends AppCompatActivity {
         strings.add("underline");
         strings.add("bold");
         TextView tvThree = findViewById(R.id.tv_three);
-        new Spantastic.SpantasticBuilder(this, tvThree, sentence)
+        new Spantastic.Builder(tvThree, sentence)
                 .setSpanList(strings)
                 .showUnderline(true)
                 .setSpanColor(ContextCompat.getColor(this, R.color.colorAccent))
                 .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-                .setClickCallback(new Spantastic.SpannableCallBack() {
-                    @Override
-                    public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH,
-                                "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT)
-                                .show();
-                    }
-                })
+                .setClickCallback((spanString, object) -> Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH,
+                        "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT)
+                        .show())
                 .apply();
 
         /* Set TextSize */
         sentence = "Spantastic with custom text size for words.";
         TextView tvFour = findViewById(R.id.tv_four);
-        new Spantastic.SpantasticBuilder(this, tvFour, sentence)
+        new Spantastic.Builder(tvFour, sentence)
                 .setSpan("text size")
                 .setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,
                         this.getResources().getDisplayMetrics()))
@@ -107,16 +102,11 @@ public class MainActivity extends AppCompatActivity {
         spanModelList.add(new SpanModel("words",
                 Color.parseColor("#FF9C27B0"), "words", true,
                 Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD), null));
-        new Spantastic.SpantasticBuilder(this, tvFive, sentence)
+        new Spantastic.Builder(tvFive, sentence)
                 .setCustomSpanModel(spanModelList)
-                .setClickCallback(new Spantastic.SpannableCallBack() {
-                    @Override
-                    public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this,
-                                String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString),
-                                Toast.LENGTH_SHORT).show();
-                    }
-                })
+                .setClickCallback((spanString, object) -> Toast.makeText(MainActivity.this,
+                        String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString),
+                        Toast.LENGTH_SHORT).show())
                 .apply();
 
         /* Developed By Sarangal */
@@ -129,9 +119,10 @@ public class MainActivity extends AppCompatActivity {
         creditModelList.add(new SpanModel("Sarangal",
                 Color.parseColor("#FF00BCD4"), "Sarangal", null,
                 Typeface.create(Typeface.DEFAULT, Typeface.BOLD), null));
-        new Spantastic.SpantasticBuilder(this, tvCredit, sentence)
+        new Spantastic.Builder(tvCredit, sentence)
                 .setCustomSpanModel(creditModelList)
                 .apply();
+
 
     }
 }
