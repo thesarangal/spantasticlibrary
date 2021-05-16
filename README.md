@@ -1,6 +1,8 @@
 # Spantastic Library
 Advance Spannable Customization
 
+Current Version: [![](https://jitpack.io/v/thesarangal/spantasticlibrary.svg)](https://jitpack.io/#thesarangal/spantasticlibrary)
+
 
 ### Features
 
