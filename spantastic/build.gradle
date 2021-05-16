@@ -1,5 +1,5 @@
 plugins {
-    id "com.android.application"
+    id "com.android.library"
 }
 apply plugin: 'kotlin-android'
 
@@ -25,9 +25,6 @@ android {
             /** Obfuscate and minify codes */
             minifyEnabled false
 
-            /** Remove unused resources */
-            shrinkResources false
-
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
                     'proguard-rules.pro'
 
@@ -38,9 +35,6 @@ android {
 
             /** Obfuscate and minify codes */
             minifyEnabled true
-
-            /** Remove unused resources */
-            shrinkResources true
 
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'),
                     'proguard-rules.pro'
