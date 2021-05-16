@@ -26,7 +26,7 @@ Add it in your root build.gradle at the end of repositories:
 #### Step 2. Add the dependency
 
 	dependencies {
-	        implementation 'com.github.thesarangal:spantasticlibrary:2.0.2'
+	        implementation 'com.github.thesarangal:spantasticlibrary:VERSION_CODE'
 	}
 
 Done! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
@@ -36,10 +36,10 @@ Done! The first time you request a project JitPack checks out the code, builds i
 
 	String sentence = "Spannable with single word underline.";
 	TextView tvOne = findViewById(R.id.tv_one);
-	new Spantastic.SpantasticBuilder(this, tvOne, sentence)
-                .setSpan("underline")
-                .showUnderline(true)
-                .apply();
+	new Spantastic.Builder(tvOne, sentence)
+                    .setSpan("underline")
+                    .showUnderline(true)
+                    .apply();
 		
 #### II. Show Underline and make Text BOLD for Multiple words
 
@@ -49,27 +49,13 @@ Done! The first time you request a project JitPack checks out the code, builds i
 	strings.add("underline");
 	strings.add("bold");
 	TextView tvTwo = findViewById(R.id.tv_two);
-	new Spantastic.SpantasticBuilder(this, tvTwo, sentence)
-                .setSpanList(strings)
-                .showUnderline(true)
-                .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-                .apply();
+	new Spantastic.Builder(tvTwo, sentence)
+                    .setSpanList(strings)
+                    .showUnderline(true)
+                    .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
+                    .apply();
 
-#### III. Show Underline and make Text BOLD for Multiple words
-
-	String sentence = "Spannable with underline and bold for multiple words.";
-	List<String> strings = new ArrayList<>();
-	strings.add("spannable");
-	strings.add("underline");
-	strings.add("bold");
-	TextView tvTwo = findViewById(R.id.tv_two);
-	new Spantastic.SpantasticBuilder(this, tvTwo, sentence)
-                .setSpanList(strings)
-                .showUnderline(true)
-                .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-                .apply();
-		
-#### IV. Set Click on Multiple Words with Bold Style
+#### III. Set Click on Multiple Words with Bold Style
 
 	String sentence = "Spannable with click, color, underline and bold for multiple words.";
 	List<String> strings = new ArrayList<>();
@@ -78,29 +64,32 @@ Done! The first time you request a project JitPack checks out the code, builds i
 	strings.add("underline");
 	strings.add("bold");
 	TextView tvThree = findViewById(R.id.tv_three);
-	new Spantastic.SpantasticBuilder(this, tvThree, sentence)
-                .setSpanList(strings)
-                .showUnderline(true)
-                .setSpanColor(ContextCompat.getColor(this, R.color.colorAccent))
-                .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
-                .setClickCallback(new Spantastic.SpannableCallBack() {
-                    @Override
-                    public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .apply();
+	new Spantastic.Builder(tvThree, sentence)
+                    .setSpanList(strings)
+                    .showUnderline(true)
+                    .setSpanColor(ContextCompat.getColor(this, R.color.colorAccent))
+                    .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
+                    .setClickCallback(new Spantastic.SpannableCallBack() {
+                        @Override
+                        public void onSpanClick(String spanString, Object... object) {
+                            Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH,
+                                    "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    })
+                    .apply();
 		
-#### V. Change TextSize
+#### IV. Change TextSize
 
 	String sentence = "Spantastic with custom text size for words.";
         TextView tvFour = findViewById(R.id.tv_four);
-        new Spantastic.SpantasticBuilder(this, tvFour, sentence)
-                .setSpan("text size")
-                .setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20, this.getResources().getDisplayMetrics()))
-                .apply();
+        new Spantastic.Builder(tvFour, sentence)
+                        .setSpan("text size")
+                        .setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 20,
+                                this.getResources().getDisplayMetrics()))
+                        .apply();
 		
-#### VI. sentence = "Spantastic with custom styles for multiple words.";
+#### V. sentence = "Spantastic with custom styles for multiple words.";
 
 	TextView tvFive = findViewById(R.id.tv_five);
 	List<SpanModel> spanModelList = new ArrayList<>();
@@ -109,15 +98,23 @@ Done! The first time you request a project JitPack checks out the code, builds i
 	spanModelList.add(new SpanModel("for", ContextCompat.getColor(this, R.color.colorAccent), "for", true, Typeface.create(Typeface.SERIF, Typeface.ITALIC), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 18, this.getResources().getDisplayMetrics())));
 	spanModelList.add(new SpanModel("multiple", Color.parseColor("#FFFF5722"), "multiple", null, Typeface.create(Typeface.MONOSPACE, Typeface.BOLD_ITALIC), TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 13, this.getResources().getDisplayMetrics())));
 	spanModelList.add(new SpanModel("words", Color.parseColor("#FF9C27B0"), "words", true, Typeface.create(Typeface.SANS_SERIF, Typeface.BOLD), null));
-	new Spantastic.SpantasticBuilder(this, tvFive, sentence)
-                .setCustomSpanModel(spanModelList)
-                .setClickCallback(new Spantastic.SpannableCallBack() {
-                    @Override
-                    public void onSpanClick(String spanString, Object... object) {
-                        Toast.makeText(MainActivity.this, String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString), Toast.LENGTH_SHORT).show();
-                    }
-                })
-                .apply();
+	new Spantastic.Builder(tvFive, sentence)
+                    .setCustomSpanModel(spanModelList)
+                    .setClickCallback(new Spantastic.SpannableCallBack() {
+                        @Override
+                        public void onSpanClick(String spanString, Object... object) {
+                            Toast.makeText(MainActivity.this,
+                                    String.format(Locale.ENGLISH, "\"%s\" Word Clicked", spanString),
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .apply();
+
+#### Changelog:
+
+v2.1.0
+^ Migrate to Kotlin
+^ "SpantasticBuilder" class is deprecated, use "Builder" class.
 
 #### Above Example's Output
 
@@ -126,7 +123,6 @@ Done! The first time you request a project JitPack checks out the code, builds i
 ### Test Demo
 
 Download DEMO APK: https://github.com/thesarangal/spantasticlibrary/raw/master/SpantasticDemo.apk
-
 
 
 
