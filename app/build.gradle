@@ -1,20 +1,23 @@
 plugins {
     id "com.android.application"
+    id 'kotlin-android'
 }
-apply plugin: 'kotlin-android'
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+
     defaultConfig {
         applicationId "in.sarangal.spannabletextview"
         minSdkVersion 15
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
+
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
         debug {
             debuggable true
 
