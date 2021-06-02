@@ -1,5 +1,12 @@
 ## Change Log
 
+### Version 2.0.7 (2021-06-02)
+- Some Bugs Fixed
+
+### Version 2.0.6 (2021-05-16)
+- Kotlin Version
+- Some Bugs Fixed
+
 ### Version 2.0.2 (2019-12-26)
 - Some Bugs Fixed
 
