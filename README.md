@@ -263,12 +263,6 @@ Done! The first time you request a project JitPack checks out the code, builds i
                         }
                     })
 
-#### Changelog:
-
-v2.1.0
-^ Migrate to Kotlin
-^ "SpantasticBuilder" class is deprecated, use "Builder" class.
-
 #### Above Example's Output
 
 ![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/95648356-09f0b500-0af4-11eb-8f85-e719b3c340e9.png)
