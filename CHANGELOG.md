@@ -1,6 +1,6 @@
 # Change Log
 
-### Version 2.0.8 (2021-06-06)
+### Version 2.1.0 (2021-06-06)
 - Some Bugs Fixed
 
 ### Version 2.0.7 (2021-06-02)
