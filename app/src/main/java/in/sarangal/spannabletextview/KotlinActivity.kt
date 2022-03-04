@@ -29,7 +29,7 @@ class KotlinActivity : AppCompatActivity() {
 
         /* Show Underline and make Text BOLD for Multiple words */
         sentence = "Spannable with underline and bold for multiple words."
-        var strings: ArrayList<String> = ArrayList()
+        val strings: ArrayList<String> = ArrayList()
         strings.add("spannable")
         strings.add("underline")
         strings.add("bold")
@@ -43,7 +43,7 @@ class KotlinActivity : AppCompatActivity() {
         /* Set Click on Multiple Words with Bold Style */
         sentence =
             "Spannable with click, color, underline and bold for multiple words."
-        strings = ArrayList()
+        strings.clear()
         strings.add("click")
         strings.add("color")
         strings.add("underline")
@@ -153,7 +153,7 @@ class KotlinActivity : AppCompatActivity() {
         /* Developed By Sarangal */
         sentence = "Developed with ❤ by Sarangal"
         val tvCredit = findViewById<TextView>(R.id.tv_credit)
-        val creditModelList: MutableList<SpanModel> = ArrayList<SpanModel>()
+        val creditModelList = ArrayList<SpanModel>()
         creditModelList.add(
             SpanModel(
                 "❤", Color.parseColor("#FFFF2F2F"),
