@@ -1,6 +1,5 @@
 package `in`.sarangal.lib.spantastic
 
-import android.content.Context
 import android.graphics.Color
 import android.graphics.Typeface
 import android.text.SpannableString
@@ -41,11 +40,11 @@ class Spantastic private constructor(builder: Builder) {
      * */
     private fun setSpannable() {
 
-        if (fullString.trim().isEmpty()) {
+        if (fullString.isBlank()) {
             return
         }
 
-        if (spanModelList == null || spanModelList.isEmpty()) {
+        if (spanModelList.isNullOrEmpty()) {
             return
         }
 
@@ -88,7 +87,8 @@ class Spantastic private constructor(builder: Builder) {
                             try {
                                 textPaint.color = spanModel.colorId ?: colorID
                                         ?: textView.currentTextColor
-                            } catch (ignored: Exception) {
+                            } catch (e: Exception) {
+                                e.printStackTrace()
                             }
 
                             /* Set Span Typeface for Styling */
@@ -107,7 +107,8 @@ class Spantastic private constructor(builder: Builder) {
                     spannableString.setSpan(clickSpan, start, end, 0)
                 }
 
-            } catch (ignored: Exception) {
+            } catch (e: Exception) {
+                e.printStackTrace()
             }
         }
 
@@ -125,23 +126,6 @@ class Spantastic private constructor(builder: Builder) {
     interface SpannableCallBack {
         fun onSpanClick(spanString: String?, vararg `object`: Any?)
     }
-
-    /**
-     * Builder Class for Handling Spannable Operations
-     *
-     * Method Params:
-     *
-     * @param mContext    Instance or Reference
-     * @param mTextView   TextView on which spannable text will be applied
-     * @param mFullString Complete string value from which span(s) will be found.
-     *
-     * Deprecated: Use Builder class
-     */
-    @Deprecated(message = "Please Use 'Builder' class")
-    internal class SpantasticBuilder(
-        private val mContext: Context, private val mTextView: TextView,
-        private val mFullString: String
-    ) : Builder(mTextView, mFullString)
 
     /**
      * Builder Class for Handling Spannable Operations
