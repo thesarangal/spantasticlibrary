@@ -1,5 +1,8 @@
 # Change Log
 
+### Version 2.1.1 (2022-03-05)
+- Optimized
+
 ### Version 2.1.0 (2021-06-06)
 - Some Bugs Fixed
 
