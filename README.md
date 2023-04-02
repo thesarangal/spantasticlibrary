@@ -1,20 +1,18 @@
 # Spantastic Library
-Advance Spannable Customization
+
+Spantastic Library is a lightweight Android library for applying custom spans on text in TextView. It provides an easy way to apply custom styles, fonts, colors, and click events to specific parts of the text in a TextView.
 
 Current Version: [![](https://jitpack.io/v/thesarangal/spantasticlibrary.svg)](https://jitpack.io/#thesarangal/spantasticlibrary)
 
+## Features
 
-### Features
+- Apply custom spans to specific parts of the text in a TextView.
+- Support for custom fonts, colors, styles, and click events.
+- Lightweight and easy to use.
 
-- Custom Typeface
-- Custom Color
-- Click Callbacks with Key Value and Object
-- Custom TextSize
-and more.
+## How to To get a Git project into your build
 
-### How to To get a Git project into your build
-
-#### Step 1. Add the JitPack repository to your build file
+### Step 1. Add the JitPack repository to your build file
 
 Add it in your root build.gradle at the end of repositories:
 
@@ -25,7 +23,7 @@ Add it in your root build.gradle at the end of repositories:
 		}
 	}
 
-#### Step 2. Add the dependency
+### Step 2. Add the dependency
 
 	dependencies {
 	        implementation 'com.github.thesarangal:spantasticlibrary:VERSION_CODE'
@@ -33,8 +31,8 @@ Add it in your root build.gradle at the end of repositories:
 
 Done! The first time you request a project JitPack checks out the code, builds it and serves the build artifacts (jar, aar).
 
-### How to use Spantastic
-#### I. Just Show Underline under specific word
+## How to use Spantastic
+### I. Just Show Underline under specific word
 
     Java:
 
@@ -56,7 +54,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .apply()
 
 		
-#### II. Show Underline and make Text BOLD for Multiple words
+### II. Show Underline and make Text BOLD for Multiple words
 
     Java
 
@@ -87,7 +85,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     .setTypeface(Typeface.create(Typeface.DEFAULT, Typeface.BOLD))
                     .apply()
 
-#### III. Set Click on Multiple Words with Bold Style
+### III. Set Click on Multiple Words with Bold Style
 
     Java
 
@@ -142,7 +140,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                     })
                     .apply()
 		
-#### IV. Change TextSize
+### IV. Change TextSize
 
     Java
 
@@ -170,7 +168,7 @@ Done! The first time you request a project JitPack checks out the code, builds i
                         .apply()
 
 		
-#### V. sentence = "Spantastic with custom styles for multiple words.";
+### V. sentence = "Spantastic with custom styles for multiple words.";
 
     Java
 
@@ -263,14 +261,23 @@ Done! The first time you request a project JitPack checks out the code, builds i
                         }
                     })
 
-#### Above Example's Output
+### Above Example's Output
 
 ![spantastic_library_custom_spannable_textview](https://user-images.githubusercontent.com/46309117/95648356-09f0b500-0af4-11eb-8f85-e719b3c340e9.png)
 
-### Test Demo
+## Test Demo
 
 Download DEMO APK: https://github.com/thesarangal/spantasticlibrary/raw/master/SpantasticDemo.apk
 
+## Contributions
 
+Contributions to this library are welcome. If you find a bug or have a feature request,
+please open an issue on
+the [GitHub repository](https://github.com/thesarangal/spantasticlibrary).
+
+## License
+
+This library is released under the [MIT License](https://opensource.org/licenses/MIT).
+You are free to use, modify, and distribute the library for commercial and non-commercial purposes, with attribution to the author.
 
 #### Developed with ❤ by Sarangal

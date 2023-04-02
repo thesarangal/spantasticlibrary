@@ -94,3 +94,6 @@ gen-external-apklibs
 
 #Extra
 .DS_Store
+
+/local.properties
+local.properties
